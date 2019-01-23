@@ -1,13 +1,15 @@
 import Welcome from '@/components/Welcome'
-import Welcome2 from '@/components/test/Welcome2'
+import Bookmarks from '@/components/bookmarks/Bookmarks'
 
 export default [
   {
     path: '/',
+    name: 'Home',
     component: Welcome,
   },
   {
-    path: '/test',
-    component: Welcome2
+    path: '/bookmarks',
+    name: 'Bookmarks',
+    component: Bookmarks
   }
 ]

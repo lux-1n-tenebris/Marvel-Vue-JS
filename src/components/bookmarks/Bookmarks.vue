@@ -1,28 +1,25 @@
 <template>
-  <div id="welcome">
-    <div class="image-layout">
-      <img src="@/assets/images/marvel-cinematic.png" alt="">
-    </div>
-    <Search/>
-    <Heroes/>
+  <div id="bookmarks">
+  <div class="image-layout">
+    <img src="@/assets/images/marvel-banner.jpg" alt="">
+  </div>
+  <BookmarkedHeroes/>
   </div>
 </template>
 
 <script>
-import Heroes from '@/components/home/heroes/Heroes'
-import Search from '@/components/home/search/Search'
+import BookmarkedHeroes from '@/components/bookmarks/bookmarked-heroes/BookmarkedHeroes'
 
 export default {
   components: {
-    Heroes,
-    Search
+    BookmarkedHeroes
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style style lang="scss" scoped>
-#welcome {
+#bookmarks {
   .image-layout {
     z-index: -1;
     position: relative;
