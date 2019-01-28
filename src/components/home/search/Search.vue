@@ -1,7 +1,7 @@
 <template>
   <div id="search">
     <div class="input-group">
-      <input type="text"><span class="bar"></span>
+      <input type="text" value="" required v-model="name"><span class="bar"></span>
       <label>Pick a hero</label>
       <span class="beneath">For example, Iron Man, Thor, Hulk</span>
     </div>
@@ -9,8 +9,32 @@
 </template>
 
 <script>
-export default {
+import { mapActions } from 'vuex';
 
+export default {
+  data () {
+    return {
+      name: '',
+      timeout: null
+    }
+  },
+  watch: {
+    name: function(name) {
+    if (!this.timeout) {
+        this.timeout = setTimeout(() => {
+        this.fetchHeroes({ name });
+        }, 500);
+    } else {
+        clearTimeout(this.timeout);
+        this.timeout = setTimeout(() => {
+        this.fetchHeroes({ name });
+        }, 500);
+    }
+    }
+  },
+  methods: {
+    ...mapActions(['fetchHeroes'])
+  },
 }
 </script>
 
@@ -41,11 +65,11 @@ export default {
         outline: none;
         border:none;
       }
-      &:focus ~ label, input.used ~ label {
-        top: -20px;
-        transform: scale(.75);
-        left: -10px;
-      }
+      // &:focus ~ label, input.used ~ label {
+      //   top: -20px;
+      //   transform: scale(.75);
+      //   left: -10px;
+      // }
       &:focus ~ .beneath, input.used ~ .beneath {
         top: 45px;
         z-index: 0;
@@ -71,13 +95,13 @@ export default {
     }
     label {
       color: #999;
-      font-size: 18px;
+      font-size: 14px;
       font-weight: normal;
       position: absolute;
       pointer-events: none;
-      left: 5px;
-      top: 10px;
-      transition: all 0.2s ease;
+      // left: 5px;
+      top: -20px;
+      // transition: all 0.2s ease;
     }
     .beneath {
       font-size: 12px;

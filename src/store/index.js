@@ -1,11 +1,12 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import heroModule from './modules/hero'
+
 Vue.use(Vuex)
 
-export const store = new Vuex.Store({
-  state: {},
-  getters: {},
-  mutations: {},
-  actions: {}
+export default new Vuex.Store({
+  modules: {
+    heroModule
+  }
 })
