@@ -2,6 +2,8 @@
 node_modules
 /dist
 
+Marvel-VueJS.code-workspace
+
 # local env files
 .env.local
 .env.*.local

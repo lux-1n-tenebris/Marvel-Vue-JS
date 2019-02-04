@@ -1,11 +1,13 @@
 import { getSearchName } from '@/api/'
 
 const state = {
-  heroes: []
+  heroes: [],
+  bookmarkedHeroes: []
 }
 
 const getters = {
-  heroes: state => { return state.heroes }
+  heroes: state => { return state.heroes },
+  bookmarkedHeroes: state => { return state.bookmarkedHeroes }
 }
 
 const mutations = {
@@ -14,6 +16,15 @@ const mutations = {
   },
   emptyHeroes: state => {
     state.heroes = []
+  },
+  setLocalBookmarks: (state) => {
+    localStorage.setItem('localBookmarks', JSON.stringify(state.bookmarkedHeroes))
+  },
+  updateBookmarks: (state, payload) => {
+    state.bookmarkedHeroes.push(payload)
+  },
+  getBookmarks: state => {
+    state.bookmarkedHeroes = JSON.parse(localStorage.getItem("localBookmarks") || "[]");
   }
 }
 
@@ -25,12 +36,21 @@ const actions = {
           commit('updateHeroes', response.data.data.results)
         })
         // .catch(error => {
-          // console.log(error)
+        //   console.log(error)
         // })
     } else {
-        commit('emptyHeroes')
+      commit('emptyHeroes')
+    }
+  },
+  setLocalBookmarks({ commit }) {
+    commit('setLocalBookmarks')
+  },
+  updateBookmarks({ commit }, payload) {
+    commit('updateBookmarks', payload)
+  },
+  getBookmarks({ commit }) {
+    commit('getBookmarks')
   }
-},
 }
 
 export default { state, getters, mutations, actions }

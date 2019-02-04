@@ -29,6 +29,9 @@ export default {
     img {
       display: block;
       margin: 0 auto;
+      width: 80%;
+      position: relative;
+      top: -15px;
     }
   }
 }

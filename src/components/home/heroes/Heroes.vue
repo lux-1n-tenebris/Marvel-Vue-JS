@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import Hero from '../hero/Hero'
+import Hero from './hero/Hero'
 import { mapGetters } from "vuex";
 
 export default {
@@ -26,11 +26,13 @@ export default {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  justify-content: space-around;
   .hero-card {
     display: flex;
-    flex-basis: 25%;
+    // flex-basis: 25%;
     flex-grow: 0;
-    max-width: 25%;
+    margin: 0 5px;
+    // max-width: 25%;
     position: relative;
   }
 }
