@@ -1,6 +1,6 @@
 <template>
   <div id="heroes">
-    <Hero v-for="h in heroes" :key="h.id" :heroes="h" class="hero-card"></Hero>
+    <Hero v-for="h in heroes" :key="h.id" :heroes="h" class="hero-card"></Hero>    
   </div>
 </template>
 
@@ -9,11 +9,19 @@ import Hero from './hero/Hero'
 import { mapGetters } from "vuex";
 
 export default {
+  data() {
+    return {
+      heroesLength: null
+    }
+  },
   components: {
     Hero
   },
   computed: {
-    ...mapGetters(['heroes'])
+    ...mapGetters(['heroes']),
+    pagination() {
+      this.heroesLength = this.heroes.length
+    }
   }
 }
 </script>
