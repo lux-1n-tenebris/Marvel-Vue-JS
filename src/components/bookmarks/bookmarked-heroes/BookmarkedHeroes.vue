@@ -14,6 +14,9 @@
             <button v-if="heroB.description" @click="toggleDescription(heroB)" class="btn-hero">
               <i class="material-icons" :class="[ isActive ? 'unActive' : 'active' ]">keyboard_arrow_down</i>
             </button>
+            <!-- <button @click="removeThisHero" class="btn-hero">
+              <i class="material-icons">clear</i>
+            </button> -->
           </div>
           <div v-show="currentHero && currentHero.id === heroB.id" class="hero-card-about">
             <p>{{ heroB.description }}</p>
@@ -26,6 +29,8 @@
 </template>
 
 <script>
+// import { mapActions } from 'vuex'
+
 export default {
   props: ['heroB'],
   data () {
@@ -35,6 +40,19 @@ export default {
     }
   },
   methods: {
+    // ...mapActions(['emptyBookmarks']),
+    // removeThisHero(){
+    //   this.emptyBookmarks({
+    //     name: '',
+    //     id: null,
+    //     description: '',
+    //     thumbnail: {
+    //       path: '',
+    //       extension: ''
+    //     }
+    //   });
+    //   this.setLocalBookmarks();
+    // },
     toggleDescription (heroB) {
       if (!this.currentHero || this.currentHero.id !== heroB.id) {
         this.currentHero = heroB

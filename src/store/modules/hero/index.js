@@ -25,6 +25,9 @@ const mutations = {
   },
   getBookmarks: state => {
     state.bookmarkedHeroes = JSON.parse(localStorage.getItem("localBookmarks") || "[]");
+  },
+  emptyBookmarks: state => {
+    state.bookmarkedHeroes = []
   }
 }
 
@@ -45,11 +48,17 @@ const actions = {
   setLocalBookmarks({ commit }) {
     commit('setLocalBookmarks')
   },
+  emptyHeroes({ commit }) {
+    commit('emptyHeroes')
+  },
   updateBookmarks({ commit }, payload) {
     commit('updateBookmarks', payload)
   },
   getBookmarks({ commit }) {
     commit('getBookmarks')
+  },
+  emptyBookmarks({ commit }){
+    commit('emptyBookmarks')
   }
 }
 

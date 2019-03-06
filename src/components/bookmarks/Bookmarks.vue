@@ -18,10 +18,11 @@ export default {
     BookmarkedHeroes
   },
   methods: {
-    ...mapActions(['getBookmarks'])
+    ...mapActions(['getBookmarks', 'emptyHeroes'])
   },
   created() {
-    this.getBookmarks();
+    // this.getBookmarks();
+    this.emptyHeroes();
   },
   computed: {
   ...mapGetters(['bookmarkedHeroes'])
